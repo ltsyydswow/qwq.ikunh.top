@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Base64 加密/解密</title>
+	<style>
+		body {
+			background-image: url("https://i0.hdslb.com/bfs/article/5f89ee6e442f7fbcfadd7cd0525ff1763622a273.jpg");
+		}
+		.container {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+		.box {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin: 0 20px;
+			padding: 20px;
+			border-radius: 10px;
+			background-color: #fff;
+			box-shadow: 0px 0px 20px #333;
+		}
+		.box h2 {
+			font-size: 24px;
+			margin-bottom: 10px;
+			font-family: 'Microsoft YaHei', sans-serif;
+		}
+		.textarea {
+			width: 300px;
+			height: 200px;
+			border: 1px solid #ccc;
+			padding: 10px;
+			box-sizing: border-box;
+			resize: none;
+			margin-bottom: 10px;
+			font-family: 'Microsoft YaHei', sans-serif;
+		}
+		.button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px;
+			border: none;
+			cursor: pointer;
+			width: 100px;
+			font-size: 18px;
+			border-radius: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box">
+			<h2>加密</h2>
+			<textarea id="plaintext" class="textarea" placeholder="请输入需要加密的文字"></textarea>
+			<button id="encryptBtn" class="button">加密</button>
+		</div>
+		<div class="box">
+			<h2>解密</h2>
+			<textarea id="ciphertext" class="textarea" placeholder="请输入需要解密的文字"></textarea>
+			<button id="decryptBtn" class="button">解密</button>
+		</div>
+	</div>
+	<script>
+		// 获取 DOM 节点
+		var plaintextEl = document.getElementById('plaintext');
+		var ciphertextEl = document.getElementById('ciphertext');
+		var encryptBtn = document.getElementById('encryptBtn');
+		var decryptBtn = document.getElementById('decryptBtn');
+		
+		// 加密函数
+		function encrypt(str) {
+			return btoa(str); // 使用 base64 加密算法
+		}
+		
+		// 解密函数
+		function decrypt(str) {
+			return atob(str); // 使用 base64 解密算法
+		}
+		
+		// 绑定加密按钮点击事件
+		encryptBtn.addEventListener('click', function() {
+			var plaintext = plaintextEl.value.trim();
+			if (plaintext === '') {
+				alert('请输入需要加密的文字！');
+				return;
+			}
+			var ciphertext = encrypt(plaintext);
+			ciphertextEl.value = ciphertext;
+		});
+		
+		// 绑定解密按钮点击事件
+		decryptBtn.addEventListener('click', function() {
+			var ciphertext = ciphertextEl.value.trim();
+			if (ciphertext === '') {
+				alert('请输入需要解密的文字！');
+				return;
+			}
+			var plaintext = decrypt(ciphertext);
+			plaintextEl.value = plaintext;
+		});
+	</script>
+</body>
+<body>
+<script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script>
+<script>
+    var jsonModel = [
+    "https://unpkg.com/live2d-widget-model-miku@1.0.5/assets/miku.model.json",// 初音
+    "https://unpkg.com/live2d-widget-model-shizuku@1.0.5/assets/shizuku.model.json",// 萌娘
+    "https://unpkg.com/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json",// 小可爱（女）
+    "https://unpkg.com/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json",// 小可爱（男）
+    "https://unpkg.com/live2d-widget-model-chitose@1.0.5/assets/chitose.model.json",// 小帅哥
+    ];
+    L2Dwidget.init({ 
+        "model": { 
+            "jsonPath": jsonModel[Math.floor(Math.random()*(jsonModel.length-1))],
+            "scale": 1 
+        }, 
+        "display": { 
+            "position": "left", // 位置left、right
+            "width": 66, // 宽度
+            "height": 90, // 高度
+            "hOffset": 10, // 横向边距
+            "vOffset": 0 // 众向边距
+        }, 
+        "mobile": { 
+            "show": false// 手机是否显示
+        },
+    });
+</script>
+
+</body>
+</body>
+</html>
+
