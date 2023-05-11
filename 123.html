@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>在线加密解密</title>
+	<style>
+		body {
+			background-image: url('https://pic4.zhimg.com/v2-45b0cf8cf8bd68d5514c965361477c1b_b.jpg');
+			background-size: cover;
+			background-position: center;
+			font-family: Arial, sans-serif;
+			color: #fff;
+		}
+
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+		.box {
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+			margin: 10px;
+			width: 400px;
+		}
+
+		h1 {
+			text-align: center;
+			font-size: 2.5rem;
+			margin-top: 0;
+		}
+
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		input[type="text"] {
+			padding: 10px;
+			border-radius: 5px;
+			border: none;
+			margin-bottom: 10px;
+			width: 100%;
+			box-sizing: border-box;
+		}
+
+		button {
+			background-color: #f06292;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 1.2rem;
+			margin-bottom: 10px;
+			width: 100%;
+			box-sizing: border-box;
+		}
+
+		.result {
+			background-color: #f8bbd0;
+			padding: 10px;
+			border-radius: 5px;
+			margin-bottom: 10px;
+			width: 100%;
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box">
+			<h1>在线加密解密</h1>
+			<form>
+				<input type="text" id="input" placeholder="请输入要加密/解密的内容">
+				<button type="button" onclick="encrypt()">加密</button>
+				<button type="button" onclick="decrypt()">解密</button>
+			</form>
+			<div class="result">
+				<p id="output"></p>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		function encrypt() {
+			var input = document.getElementById("input").value;
+			var key = "ltsyydsfuckyou";
+			var encrypted = CryptoJS.AES.encrypt(input, key).toString();
+			var encoded = btoa(encrypted);
+			document.getElementById("output").innerHTML = encoded;
+		}
+
+		function decrypt() {
+			var input = document.getElementById("input").value;
+			var key = "ltsyydsfuckyou";
+			var decoded = atob(input);
+			var decrypted = CryptoJS.AES.decrypt(decoded, key).toString(CryptoJS.enc.Utf8);
+			document.getElementById("output").innerHTML = decrypted;
+		}
+	</script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+</body>
+</html>
