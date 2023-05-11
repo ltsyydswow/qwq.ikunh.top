@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>在线计算器</title>
+
+	<style>
+		body {
+			background-image: url("https://pic4.zhimg.com/v2-45b0cf8cf8bd68d5514c965361477c1b_b.jpg");
+			background-size: cover;
+			background-color: pink;
+		}
+		
+		table {
+			border-radius: 10px;
+			padding: 20px;
+			margin: 50px auto;
+			background-color: white;
+			width: 600px;
+			height: 400px;
+		}
+		
+		input[type="number"] {
+			padding: 5px;
+			border-radius: 5px;
+			border: none;
+			width: 120px;
+		}
+		
+		input[type="submit"] {
+			padding: 5px;
+			border-radius: 5px;
+			border: none;
+			background-color: pink;
+			color: white;
+			cursor: pointer;
+			width: 100px;
+		}
+		
+		input[type="text"] {
+			padding: 5px;
+			border-radius: 5px;
+			border: none;
+			width: 200px;
+			height: 60px;
+			font-size: 16px;
+			line-height: 1.5;
+		}
+	</style>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>
+				<label for="shape">选择形状:</label>
+			</td>
+			<td>
+				<select id="shape">
+					<option value="circle">圆</option>
+					<option value="cone">圆锥</option>
+					<option value="square">正方形</option>
+					<option value="rectangle">长方形</option>
+					<option value="triangle">三角形</option>
+					<option value="parallelogram">平行四边形</option>
+				</select>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<label for="input1">请输入第一个参数:</label>
+			</td>
+			<td>
+				<input type="number" id="input1">
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<label for="input2">请输入第二个参数:</label>
+			</td>
+			<td>
+				<input type="number" id="input2">
+			</td>
+		</tr>
+		
+		<tr>
+			<td colspan="2">
+				<input type="submit" value="计算">
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				<label for="result">结果:</label>
+			</td>
+			<td>
+				<input type="text" id="result" readonly>
+			</td>
+		</tr>
+	</table>
+	
+	<script>
+		var shapeSelect = document.getElementById("shape");
+		var input1 = document.getElementById("input1");
+		var input2 = document.getElementById("input2");
+		var result = document.getElementById("result");
+		
+		function calculate() {
+			var shape = shapeSelect.value;
+			var value1 = parseFloat(input1.value);
+			var value2 = parseFloat(input2.value);
+			
+			if (shape === "circle") {
+				var area = Math.PI * value1 * value1;
+				var perimeter = 2 * Math.PI * value1;
+				
+				result.value = "面积: " + area + "\n 周长: " + perimeter;
+			} else if (shape === "cone") {
+				var area = Math.PI * value1 * Math.sqrt(value1*value1 + value2*value2);
+				var volume = Math.PI * value1 * value1 * value2 / 3;
+				
+				result.value = "表面积:" + area + "\n 体积:" + volume;
+			} else if (shape === "square") {
+				var area = value1 * value1;
+				var perimeter = 4 * value1;
+				
+				result.value = "面积: " + area + "\n 周长: " + perimeter;
+			} else if (shape === "rectangle") {
+				var area = value1 * value2;
+				var perimeter = 2 * (value1 + value2);
+				
+				result.value = "面积: " + area + "\n 周长: " + perimeter;
+			} else if (shape === "triangle") {
+				var s = (value1 + value2 + Math.sqrt(value1*value1 + value2*value2)) / 2;
+				var area = Math.sqrt(s*(s-value1)*(s-value2)*(s-Math.sqrt(value1*value1+value2*value2)));
+				var perimeter = value1 + value2 + Math.sqrt(value1*value1 + value2*value2);
+				
+				result.value = "面积: " + area + "\n 周长: " + perimeter;
+			} else if (shape === "parallelogram") {
+				var area = value1 * value2;
+				var perimeter = 2 * (value1 + value2);
+				
+				result.value = "面积: " + area + "\n 周长: " + perimeter;
+			}
+		}
+		
+		var button = document.querySelector("input[type='submit']");
+		button.addEventListener("click", calculate);
+	</script>
+</body>
+</html>
