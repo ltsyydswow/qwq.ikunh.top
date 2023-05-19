@@ -1,0 +1,148 @@
+* {
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	/* 大背景图 */
+	background-image: url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fblog.itpub.net%2Fueditor%2Fphp%2Fupload%2Fimage%2F20200903%2F1599104574214191.jpeg&refer=http%3A%2F%2Fblog.itpub.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1644652607&t=3d85acef0a45e78df9f51c406f1b85af');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+::-webkit-scrollbar{
+	display: none;
+}
+
+.wrap {
+	width: 722px;
+	height: 522px;
+	background-color: rgba(255, 255, 255, 0.5);
+	backdrop-filter: blur(5px);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	justify-content: center;
+}
+
+.infoLeft {
+	width: 360px;
+}
+
+.leftTop {
+	width: 100%;
+	height: 360px;
+	/* 卡片背景图 */
+	background-image: url('https://img1.baidu.com/it/u=1508697158,2526360150&fm=26&fmt=auto');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.leftBottom {
+	width: 100%;
+	height: 162px;
+	/* background-color: #648FA1; */
+}
+
+.logoAndName {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px 0;
+}
+
+.logoAndName img {
+	width: 60px;
+	height: 60px;
+	border-radius: 100px;
+	border: 2px solid #fff;
+}
+
+.logoAndName h1 {
+	color: #fff;
+	font-size: 22px;
+	letter-spacing: 0.05em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin-left: 10px;
+}
+
+.addQQ {
+	width: 240px;
+	height: 35px;
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 5px;
+	margin: auto;
+	text-align: center;
+	line-height: 35px;
+	color: #333;
+	font-size: 14px;
+
+}
+
+.addQQ:hover {
+	opacity: 0.9;
+}
+
+.infoRight {
+	width: 362px;
+	padding: 15px 10px;
+	background-color: #fff;
+	overflow: scroll;
+}
+
+.personInfo li {
+	display: flex;
+	align-items: center;
+	font-size: 14px;
+	padding: 5px 10px;
+	color: #333;
+
+}
+
+.personInfo li a {
+	color: #333;
+}
+
+.personInfo li img {
+	width: 23px;
+	height: 23px;
+	margin-right: 10px;
+}
+
+
+
+
+@media screen and (max-width: 450px) {
+	.wrap{
+		width: 90%;
+		margin: auto;
+		display: block;
+		background-color: transparent;
+		
+	}
+	.infoLeft,.infoRight{
+		width: 100%;
+	}
+	.leftTop{
+		display: none;
+	}
+	.leftBottom{
+		background-color: rgba(255, 255, 255, 0.5);
+		backdrop-filter: blur(5px);
+	}
+	.infoRight{
+		height: 380px;
+		padding: 15px;
+		box-sizing: border-box;
+		background-color: rgba(255, 255, 255, 0.8);
+		backdrop-filter: blur(5px);
+		overflow-y: scroll;
+	}
+}
