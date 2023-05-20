@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>你的名字</title>
+	<style>
+		body {
+			background-image: url("https://www.ouklc.com/api/tp2");
+			background-size: cover;
+			color: #fff;
+			font-family: monospace;
+			font-size: 16px;
+			margin: 0;
+			padding: 0;
+		}
+
+		.terminal {
+			background-color: #1c1c1c;
+			border-radius: 10px;
+			box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+			margin: 20px auto;
+			padding: 20px;
+			width: 600px;
+		}
+
+		.terminal-header {
+			background-color: #313131;
+			border-radius: 10px 10px 0 0;
+			display: flex;
+			justify-content: space-between;
+			padding: 10px;
+		}
+
+		.terminal-header .circle {
+			background-color: #ff5f57;
+			border-radius: 50%;
+			height: 12px;
+			margin-right: 10px;
+			width: 12px;
+		}
+
+		.terminal-body {
+			padding: 20px;
+		}
+
+		.terminal-prompt {
+			color: #00b894;
+			display: inline-block;
+			margin-right: 10px;
+		}
+
+		.terminal-input {
+			border: none;
+			background-color: transparent;
+			color: #fff;
+			font-family: monospace;
+			font-size: 16px;
+			outline: none;
+			width: 80%;
+		}
+
+		.terminal-output {
+			margin-top: 10px;
+		}
+
+		.terminal-output img {
+			max-width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="terminal">
+		<div class="terminal-header">
+			<div class="circle"></div>
+			<div>Terminal</div>
+			<div>&times;</div>
+		</div>
+		<div class="terminal-body">
+			<div>让我们开始你的名字的介绍吧</div>
+                                                <div>输入book查看你的名字讲述了啥，sanye查看三叶的资料，long查看泷的资料
+
+			<div>
+				<span class="terminal-prompt">root@ikun:~$</span>
+				<input type="text" class="terminal-input" id="commandInput" onkeydown="if (event.keyCode == 13) document.getElementById('executeButton').click()">
+				<button id="executeButton" onclick="executeCommand()">执行</button>
+			</div>
+			<div id="outputArea" class="terminal-output"></div>
+		</div>
+	</div>
+
+	<script>
+		function executeCommand() {
+			var commandInput = document.getElementById("commandInput");
+			var outputArea = document.getElementById("outputArea");
+			var command = commandInput.value.trim();
+
+			if (command === "book") {
+				outputArea.innerHTML += "影片讲述了两个年轻人在梦中相遇，他们互相寻找对方的身份，最终相遇并相爱的故事。影片的主要情节围绕着男主角立花瀧和女主角宫水三叶展开。他们在梦中相遇，但是每次醒来后都无法记得对方的名字和面容。为了找到对方，他们开始在现实生活中寻找线索，并逐渐了解到彼此所在的时空不同。最终，他们通过一场神秘的灾难事件相遇并相爱。影片的主题是时间和空间的交错，以及命运的不可预知性。影片还涉及到日本传统文化和神话故事，如神社、神奈川县的富士山、被称为“神隐”的神秘现象等等。影片的画风细腻唯美，音乐也非常动人，深深打动了观众的心灵。<br>";
+			} else if (command === "sanye") {
+				outputArea.innerHTML += "糸守镇高中二年级同学，与学校早耶香，敕使河原克彦是好友。也是镇长的女儿。她有有极强的责任感。在山顶与泷相遇后，毫不犹豫地接受了泷的嘱托，回到自己的身体继续和敕使河原等人疏导村民避难，并依靠自己的力量最终说服了作为镇长的父亲进行防灾演习。她性格性格直率。反对亲生父亲参加镇长的选举活动，当妹妹宫水四叶提出“你们也差不多该和好了吧”（指三叶和父亲），斩钉截铁地回答“这是大人间的事情”，并认为四叶年纪还小不能理解一些事情。<br>";
+				outputArea.innerHTML += '<img src="https://img2.baidu.com/it/u=397541337,1004217137&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"><br>';
+			} else if (command === "long") {
+				outputArea.innerHTML += "在东京就读的高中生，和藤井司和高木真太是好友。性格成熟，稳重，温柔，阳光，自信，执著，勇敢，善良。个性十分要强，因此经常跟人打架。 [5] 在以三叶形态时，踢翻了对三叶指手画脚的人的画桌，使众人对三叶刮目相看。 [6] 在试图说服三叶的父亲让全镇紧急避难时，尽管对方相当强硬，却还是没能忍住揪住了三叶父亲的领带，才让知道宫水家族特殊现象的三叶父亲看出了这时面前不是自己的女儿。<br>";
+				outputArea.innerHTML += '<img src="https://bkimg.cdn.bcebos.com/pic/4610b912c8fcc3cee71162b29a45d688d53f2059?x-bce-process=image/watermark,image_d2F0ZXIvYmFpa2UyMjA=,g_7,xp_5,yp_5"><br>';
+			} else if (command === "bye") {
+				outputArea.innerHTML += "下次再见!<br>";
+			} else if (command === "ls") {
+				outputArea.innerHTML += "ikun  jiji ltsyyds ikun.html passwd.txt<br>";
+			} else {
+				outputArea.innerHTML += "我不完全是一个终端虽然长得像macos里的<br>";
+
+			}
+
+			commandInput.value = "";
+		}
+	</script>
+</body>
+</html>
