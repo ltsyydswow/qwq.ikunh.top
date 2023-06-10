@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>查看本地IP</title>
+	<style>
+		body {
+			background-image: url("http://n.sinaimg.cn/sinacn10114/600/w1920h1080/20190527/e4b3-hxntqyz2124144.jpg");
+			background-size: cover;
+			font-family: Arial, sans-serif;
+		}
+
+		h1 {
+			color: #b221c9;
+			text-align: center;
+			margin-top: 50px;
+		}
+
+		.container {
+			background-color: #f9c2cc;
+			border-radius: 20px;
+			padding: 20px;
+			margin: 50px auto;
+			width: 80%;
+			max-width: 600px;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 10px;
+			font-weight: bold;
+		}
+
+		input[type="submit"] {
+			background-color: hsl(280, 82%, 87%);
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			margin-top: 10px;
+		}
+
+		.result {
+			margin-top: 20px;
+			background-color: #fff;
+			border-radius: 20px;
+			padding: 20px;
+			height: 200px;
+			overflow-y: scroll;
+		}
+	</style>
+</head>
+<body>
+	<h1>查看本地IP</h1>
+	<div class="container">
+		<label for="start">开始：</label>
+		<input type="submit" id="start" value="点击获取本地IP">
+		<div class="result"></div>
+	</div>
+
+	<script>
+		const startButton = document.getElementById("start");
+		const resultDiv = document.querySelector(".result");
+
+		startButton.addEventListener("click", () => {
+			fetch("https://ip.useragentinfo.com/json")
+				.then(response => response.json())
+				.then(data => {
+					resultDiv.textContent = JSON.stringify(data, null, 2);
+				})
+				.catch(error => {
+					resultDiv.textContent = "发生错误：" + error.message;
+				});
+		});
+	</script>
+</body>
+</html>
+
+
+
