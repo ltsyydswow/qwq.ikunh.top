@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background-image: url("https://ts1.cn.mm.bing.net/th/id/R-C.1e6d6f2f55a17d4fdfd9c7b5d4a358f9?rik=fw08DTBBw8%2bLwg&riu=http%3a%2f%2fpic.bizhi360.com%2fbbpic%2f98%2f9398.jpg&ehk=GjeIsiSMcUmTtf9nhW1Tx7q7ChY0Qe7%2fM%2bcgYvrRLZE%3d&risl=&pid=ImgRaw&r=0");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    
+    .content {
+      display: flex;
+      align-items: center;
+      background-color: rgba(255, 192, 203, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .input-container,
+    .qrcode-container {
+      margin: 10px;
+    }
+    
+    h1 {
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    
+    input {
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+      width: 200px;
+    }
+    
+    img {
+      max-width: 200px;
+      max-height: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="content">
+      <div class="input-container">
+        <h1>文字转二维码</h1>
+        <input type="text" id="text-input" placeholder="输入要转换的文字">
+      </div>
+      <div class="qrcode-container">
+        <img id="qrcode-image" src="" alt="二维码">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function generateQRCode() {
+      var text = document.getElementById('text-input').value;
+      var qrcodeImage = document.getElementById('qrcode-image');
+      var qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(text);
+      qrcodeImage.src = qrCodeUrl;
+    }
+
+    var inputElement = document.getElementById('text-input');
+    inputElement.addEventListener('input', generateQRCode);
+  </script>
+</body>
+</html>
