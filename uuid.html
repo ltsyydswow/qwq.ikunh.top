@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>在线生成UUID</title>
+	<style type="text/css">
+		body {
+			background-image: url('https://n.sinaimg.cn/sinacn20110/575/w1920h1055/20190508/86b0-hwsffza7766335.jpg');
+			background-color: #F9C5D1;
+			background-size: cover;
+			font-family: Arial, sans-serif;
+		}
+		h1 {
+			text-align: center;
+			color: white;
+			font-size: 36px;
+			margin-top: 50px;
+		}
+		.container {
+			margin: 50px auto;
+			width: 500px;
+			background-color: white;
+			border-radius: 10px;
+			padding: 20px;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+		}
+		label {
+			display: block;
+			font-size: 20px;
+			margin-bottom: 10px;
+		}
+		input[type=text] {
+			display: block;
+			width: 100%;
+			padding: 10px;
+			font-size: 18px;
+			border-radius: 5px;
+			border: none;
+			margin-bottom: 20px;
+			box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+		}
+		button {
+			background-color: #F9C5D1;
+			color: white;
+			font-size: 20px;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+			cursor: pointer;
+		}
+		button:hover {
+			background-color: #F7AEBF;
+		}
+	</style>
+</head>
+<body>
+	<h1>在线生成UUID</h1>
+	<div class="container">
+		<label for="uuid">UUID：</label>
+		<input type="text" id="uuid" readonly>
+		<button onclick="generateUUID()">生成</button>
+	</div>
+
+	<script type="text/javascript">
+		function generateUUID() {
+			var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+			    var r = Math.random() * 16 | 0,
+			        v = c == 'x' ? r : (r & 0x3 | 0x8);
+			    return v.toString(16);
+			});
+			document.getElementById("uuid").value = uuid;
+		}
+	</script>
+</body>
+</html>
